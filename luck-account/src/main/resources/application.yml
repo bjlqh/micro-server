@@ -1,0 +1,37 @@
+server:
+  port: 8188
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///account
+    username: root
+    password: password
+    type: com.alibaba.druid.pool.DruidDataSource
+  application:
+    name: luck-account
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.lqh.dev.domain
+  configuration:
+    map-underscore-to-camel-case: true
+mapper:
+  identity: mysql
+  mappers: com.lqh.dev.base.mybatis.BaseMapper
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    com.lqh.dev.mapper: debug
+
+feign:
+  client:
+    config:
+      feignName:
+        connectionTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+        decode404: false

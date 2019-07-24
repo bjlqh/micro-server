@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka-server" />
+        <module name="luck-account" />
+        <module name="luck-account2" />
+        <module name="luck-api-gateway" />
+        <module name="luck-common" />
+        <module name="tx-manage" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="eureka-server" options="" />
+      <module name="luck-account" options="" />
+      <module name="luck-account2" options="" />
+      <module name="luck-common" options="" />
+      <module name="mirco-server" options="-parameters" />
+    </option>
+  </component>
+</project>

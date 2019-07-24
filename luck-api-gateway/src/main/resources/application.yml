@@ -1,0 +1,20 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: luck-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    com:
+      lqh:
+        dev:
+          mapper: debug
+luck:
+  account: luck-account
+  account2: luck-account2

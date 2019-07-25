@@ -3,21 +3,7 @@ package com.lqh.dev.mytransactional.connection;
 import com.lqh.dev.mytransactional.transactional.LbTransaction;
 import com.lqh.dev.mytransactional.transactional.TransactionType;
 
-import java.sql.Array;
-import java.sql.Blob;
-import java.sql.CallableStatement;
-import java.sql.Clob;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.NClob;
-import java.sql.PreparedStatement;
-import java.sql.SQLClientInfoException;
-import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.SQLXML;
-import java.sql.Savepoint;
-import java.sql.Statement;
-import java.sql.Struct;
+import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
@@ -84,6 +70,7 @@ public class MyConnection implements Connection {
                     } else {
                         connection.rollback();
                     }
+                    connection.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -94,11 +81,23 @@ public class MyConnection implements Connection {
     @Override
     public void rollback() throws SQLException {
         //...
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                lbTransaction.getTask().waitTask();
+                try {
+                    connection.rollback();
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     @Override
     public void close() throws SQLException {
-        this.connection.close();
+
     }
 
     @Override

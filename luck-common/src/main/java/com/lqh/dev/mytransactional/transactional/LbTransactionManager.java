@@ -39,7 +39,10 @@ public class LbTransactionManager {
     public static LbTransaction createTransaction(String groupId) {
         //创建我自己的事务
         String transactionId = UUID.randomUUID().toString();
-        return new LbTransaction(transactionId, groupId, null);//本地事务的状态如何来去
+        LbTransaction lbTransaction = new LbTransaction(transactionId, groupId, null);//本地事务的状态如何来去
+        System.out.println("创建事务:");
+        LB_TRANSACTION_MAP.put(groupId,lbTransaction);
+        return lbTransaction;
     }
 
     public static void addLbTransaction(LbTransaction lbTransaction, Boolean isEnd) {

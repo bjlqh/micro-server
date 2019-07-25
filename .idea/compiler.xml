@@ -12,8 +12,18 @@
         <module name="luck-api-gateway" />
         <module name="luck-common" />
         <module name="tx-manage" />
+        <module name="tx-manager" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="eureka-server" target="1.8" />
+      <module name="luck-account" target="1.8" />
+      <module name="luck-account2" target="1.8" />
+      <module name="luck-api-gateway" target="1.8" />
+      <module name="luck-common" target="8" />
+      <module name="mirco-server" target="1.8" />
+      <module name="tx-manager" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

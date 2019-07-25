@@ -25,7 +25,7 @@ public class NettyClient implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-
+        start("localhost",8000);
     }
 
     public void start(String hostName, int port) {
@@ -52,7 +52,11 @@ public class NettyClient implements InitializingBean {
     }
 
     public void send(JSONObject jsonObject) {
-
+        try {
+            client.call(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {

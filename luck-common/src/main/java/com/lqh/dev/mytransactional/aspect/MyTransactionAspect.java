@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 public class MyTransactionAspect implements Ordered {
 
     @Around("@annotation(com.lqh.dev.mytransactional.annotation.MyTransactional)")
-    public Object invoke(ProceedingJoinPoint joinPoint) {
+    public void invoke(ProceedingJoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         MyTransactional myTransactional = method.getAnnotation(MyTransactional.class);
@@ -26,6 +26,9 @@ public class MyTransactionAspect implements Ordered {
         if (myTransactional.isStart()) {
             //创建事务组
             groupId = LbTransactionManager.createLbTransactionGroup();
+        }else {
+            //todo ?
+
         }
         //添加事务到事务组
         LbTransaction transaction = LbTransactionManager.createTransaction(groupId);
@@ -38,8 +41,6 @@ public class MyTransactionAspect implements Ordered {
         }
 
         LbTransactionManager.addLbTransaction(transaction,myTransactional.isEnd());
-
-        return null;
     }
 
     //我自己的@mytransactional 最后执行，优先执行spring的逻辑

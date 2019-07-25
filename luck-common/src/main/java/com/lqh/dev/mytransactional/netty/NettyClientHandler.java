@@ -40,6 +40,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     }
 
     public void call(JSONObject object) {
-        //TODO 发送数据
+        System.out.println("发送的数据: " + object.toJSONString());
+        context.writeAndFlush(object.toJSONString());
     }
 }

@@ -16,11 +16,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="eureka-server" target="1.8" />
-      <module name="luck-account" target="1.8" />
-      <module name="luck-account2" target="1.8" />
-      <module name="luck-api-gateway" target="1.8" />
-      <module name="luck-common" target="8" />
       <module name="mirco-server" target="1.8" />
       <module name="tx-manager" target="8" />
     </bytecodeTargetLevel>

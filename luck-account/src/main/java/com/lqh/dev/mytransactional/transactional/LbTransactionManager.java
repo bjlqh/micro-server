@@ -1,7 +1,7 @@
 package com.lqh.dev.mytransactional.transactional;
 
 import com.alibaba.fastjson.JSONObject;
-import com.lqh.dev.mytransactional.netty.NettyClient;
+import com.lqh.dev.netty.NettyClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,13 +15,9 @@ public class LbTransactionManager {
     private static NettyClient nettyClient;
     private static Map<String,LbTransaction> LB_TRANSACTION_MAP = new HashMap<>();
 
-    @Autowired
-    public static void setClient(NettyClient client) {
+    public LbTransactionManager(NettyClient client) {
+        System.out.println("注入nettyClient");
         LbTransactionManager.nettyClient = client;
-    }
-
-    public static NettyClient getClient() {
-        return nettyClient;
     }
 
     public static String createLbTransactionGroup() {

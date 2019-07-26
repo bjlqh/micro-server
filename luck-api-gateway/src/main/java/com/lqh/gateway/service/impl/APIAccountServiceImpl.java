@@ -5,7 +5,6 @@ import com.lqh.dev.model.ResponseResult;
 import com.lqh.gateway.feign.CallRemoteAccount2Service;
 import com.lqh.gateway.feign.CallRemoteAccountService;
 import com.lqh.gateway.service.IAPIAccountService;
-import com.lqh.gateway.transactional.annotation.MyTransactional;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,7 +20,6 @@ public class APIAccountServiceImpl implements IAPIAccountService {
     private CallRemoteAccount2Service callRemoteAccount2Service;
 
     @Override
-    @MyTransactional
     public String transfer(String payerName, String gatherName, BigDecimal money) {
         ResponseResult<Account> result1 = callRemoteAccountService.findOneByName(payerName);
         Account payer = result1.getData();

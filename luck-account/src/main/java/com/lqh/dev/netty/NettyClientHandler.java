@@ -1,4 +1,4 @@
-package com.lqh.dev.mytransactional.netty;
+package com.lqh.dev.netty;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

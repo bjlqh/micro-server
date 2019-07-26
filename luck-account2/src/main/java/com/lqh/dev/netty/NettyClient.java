@@ -1,4 +1,4 @@
-package com.lqh.dev.mytransactional.netty;
+package com.lqh.dev.netty;
 
 import com.alibaba.fastjson.JSONObject;
 import io.netty.bootstrap.Bootstrap;
@@ -19,33 +19,34 @@ import java.util.concurrent.Executors;
 @Component
 public class NettyClient implements InitializingBean {
 
-    public NettyClientHandler client = null;
+    private NettyClientHandler client = null;
 
     private static ExecutorService executorService = Executors.newCachedThreadPool();
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        start("localhost",8000);
+        System.out.println("nettyClient，初始化");
+        start("localhost", 8000);
     }
 
-    public void start(String hostName, int port) {
+    private void start(String hostName, int port) {
         client = new NettyClientHandler();
         Bootstrap bootstrap = new Bootstrap();
         NioEventLoopGroup group = new NioEventLoopGroup();
         bootstrap.group(group)
                 .channel(NioSocketChannel.class)
-                .option(ChannelOption.TCP_NODELAY,true)
+                .option(ChannelOption.TCP_NODELAY, true)
                 .handler(new ChannelInitializer<Channel>() {
                     @Override
                     protected void initChannel(Channel ch) {
                         ch.pipeline().addLast(new StringEncoder());
                         ch.pipeline().addLast(new StringDecoder());
-                        ch.pipeline().addLast("handler",client);
+                        ch.pipeline().addLast("handler", client);
                     }
                 });
 
         try {
-            bootstrap.connect(hostName,port).sync();
+            bootstrap.connect(hostName, port).sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -74,7 +75,7 @@ public class NettyClient implements InitializingBean {
         Channel channel = bootstrap.connect("127.0.0.1", 8000).channel();
 
         while (true) {
-            channel.writeAndFlush(Thread.currentThread().getName()+" : "+new Date() + ": hello world!");
+            channel.writeAndFlush(Thread.currentThread().getName() + " : " + new Date() + ": hello world!");
             Thread.sleep(2000);
         }
     }

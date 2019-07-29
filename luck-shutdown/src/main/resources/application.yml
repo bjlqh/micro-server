@@ -1,9 +1,9 @@
 server:
-  port: 8088
+  port: 8388
 
 spring:
   application:
-    name: luck-gateway
+    name: luck-shutdown
 
 eureka:
   client:
@@ -12,14 +12,7 @@ eureka:
 
 logging:
   level:
-    com:
-      lqh:
-        dev:
-          mapper: debug
-luck:
-  account: luck-account
-  account2: luck-account2
-  shutdown: luck-shutdown
+    com.lqh.dev.mapper: debug
 
 feign:
   client:
@@ -30,6 +23,10 @@ feign:
         loggerLevel: full
         decode404: false
 
-ribbon:
-  ReadTimeout: 10000
-  ConnectTimeout: 10000
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
+management:
+  security:
+    enabled: false

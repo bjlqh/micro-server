@@ -29,3 +29,11 @@ logging:
       lqh:
         dev:
           mapper: debug
+
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
+management:
+  security:
+    enabled: false

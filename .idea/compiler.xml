@@ -11,6 +11,7 @@
         <module name="luck-account2" />
         <module name="luck-api-gateway" />
         <module name="luck-common" />
+        <module name="luck-shutdown" />
         <module name="tx-manage" />
         <module name="tx-manager" />
       </profile>

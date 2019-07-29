@@ -8,19 +8,21 @@
     <artifactId>mirco-server</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>luck-account</module>
-        <module>luck-account2</module>
-        <module>eureka-server</module>
-        <module>luck-common</module>
-        <module>luck-api-gateway</module>
-    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.14.RELEASE</version>
     </parent>
+
+    <modules>
+        <module>luck-account</module>
+        <module>luck-account2</module>
+        <module>eureka-server</module>
+        <module>luck-common</module>
+        <module>luck-api-gateway</module>
+        <module>luck-shutdown</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>

@@ -1,4 +1,4 @@
-package com.lqh.dev.base.mybatis;
+package com.lqh.dev.mybatis;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;

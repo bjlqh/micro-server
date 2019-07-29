@@ -2,11 +2,13 @@ package com.lqh.dev.mytransactional.aspect;
 
 
 import com.lqh.dev.mytransactional.connection.MyConnection;
+import com.lqh.dev.service.IAccountService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.sql.Connection;
 
 @Aspect

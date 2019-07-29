@@ -35,4 +35,9 @@ public class AccountServiceImpl implements IAccountService {
         System.out.println(i);
         int n = 1/0;
     }
+
+    @Override
+    public void print() {
+        System.out.println("hello world");
+    }
 }

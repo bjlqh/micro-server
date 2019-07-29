@@ -9,4 +9,6 @@ public interface IAccountService {
     Long save(Account account);
 
     void transfer(Account account);
+
+    void print();
 }

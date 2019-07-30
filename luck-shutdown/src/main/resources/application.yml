@@ -5,23 +5,9 @@ spring:
   application:
     name: luck-shutdown
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
 logging:
   level:
     com.lqh.dev.mapper: debug
-
-feign:
-  client:
-    config:
-      feignName:
-        connectionTimeout: 10000
-        readTimeout: 10000
-        loggerLevel: full
-        decode404: false
 
 endpoints:
   shutdown:

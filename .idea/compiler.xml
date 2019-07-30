@@ -22,6 +22,7 @@
       <module name="luck-account2" target="1.8" />
       <module name="luck-api-gateway" target="1.8" />
       <module name="luck-common" target="8" />
+      <module name="luck-shutdown" target="1.8" />
       <module name="mirco-server" target="1.8" />
       <module name="tx-manager" target="8" />
     </bytecodeTargetLevel>

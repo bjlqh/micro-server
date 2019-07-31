@@ -22,6 +22,7 @@
         <module>luck-common</module>
         <module>luck-api-gateway</module>
         <module>luck-shutdown</module>
+        <module>gracefully-shutdown</module>
     </modules>
 
     <properties>

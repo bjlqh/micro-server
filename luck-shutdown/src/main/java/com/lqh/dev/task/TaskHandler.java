@@ -32,7 +32,7 @@ public class TaskHandler {
         customPool = new ThreadPoolExecutor(coreSize, maxSize, keepAlive, unit, deque, factory, rejectedHandler);
     }
 
-    @Scheduled(fixedDelay = 10000)
+    //@Scheduled(fixedDelay = 10000)
     public void execute() {
         System.out.println("========任务开始=======");
         int taskCount = 4;

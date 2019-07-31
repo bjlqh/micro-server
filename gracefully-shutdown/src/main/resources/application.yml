@@ -1,0 +1,15 @@
+server:
+  port: 8488
+spring:
+  application:
+    name: graceful-shutdown
+
+endpoints:
+  shutdown:
+    graceful:
+      enabled: false
+      timeout: 15
+      wait: 15
+management:
+  security:
+    enabled: false

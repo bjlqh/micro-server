@@ -41,6 +41,7 @@ public class CustomShutdown implements TomcatConnectorCustomizer, ApplicationLis
                         log.warn("WEB 应用关闭超时");
                     }
                 }
+                log.warn("WEB 应用已关闭");
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 log.error("线程任务终止异常：{}", e.getMessage());

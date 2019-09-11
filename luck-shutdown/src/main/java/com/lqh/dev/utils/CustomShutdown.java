@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class CustomShutdown implements TomcatConnectorCustomizer, ApplicationListener<ContextClosedEvent> {
 
-    private static final int TIMEOUT = 5;
+    private static final int TIMEOUT = 30;
 
     private volatile Connector connector;
 
@@ -36,12 +36,7 @@ public class CustomShutdown implements TomcatConnectorCustomizer, ApplicationLis
 
                 if (!threadPoolExecutor.awaitTermination(TIMEOUT, TimeUnit.SECONDS)) {
                     log.warn("WEB 应用等待关闭超过最大时长" + TIMEOUT + "秒，将进行强制关闭！");
-                    threadPoolExecutor.shutdown();
-                    if (!threadPoolExecutor.awaitTermination(TIMEOUT, TimeUnit.SECONDS)) {
-                        log.warn("WEB 应用关闭超时");
-                    }
                 }
-                log.warn("WEB 应用已关闭");
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 log.error("线程任务终止异常：{}", e.getMessage());

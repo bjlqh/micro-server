@@ -8,12 +8,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class AccountServiceImpl implements IAccountService {
 
     @Resource
     private AccountMapper accountMapper;
+
+    @Override
+    public List<Account> findAll() {
+        return accountMapper.selectAll();
+    }
 
     @Override
     public Account selectOneByName(String name) {

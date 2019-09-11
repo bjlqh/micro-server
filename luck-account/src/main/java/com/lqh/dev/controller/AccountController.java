@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping("/account")
@@ -23,8 +27,20 @@ public class AccountController {
     @Resource
     private CallRemoteAccount2Service account2Service;
 
+    @GetMapping("/find/All")
+    public ResponseResult<List<Account>> findList() {
+        ResponseResult<List<Account>> response = new ResponseResult<>();
+        List<Account> all = accountService.findAll();
+        response.setData(all);
+        return response;
+    }
     @GetMapping("/find/name")
-    public ResponseResult<Account> findOneByName(String name) {
+    public ResponseResult<Account> findOneByName(@RequestParam(required = false) String name, ServletRequest request) {
+        System.out.println(name);
+        if (name == null) {
+            Object name1 = request.getAttribute("name");
+            name = name1.toString();
+        }
         ResponseResult<Account> response = new ResponseResult<>();
         Account account = accountService.selectOneByName(name);
         response.setData(account);

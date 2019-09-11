@@ -15,4 +15,11 @@ endpoints:
     sensitive: false
 management:
   security:
-    enabled: false
+    enabled: true
+    roles: ADMIN
+  context-path: /actuator
+  port: 7388
+security:
+  user:
+    name: admin
+    password: admin

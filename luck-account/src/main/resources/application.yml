@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql:///account
+    url: jdbc:mysql:///account?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
@@ -43,3 +43,16 @@ endpoints:
 management:
   security:
     enabled: false
+
+proxy:
+  agent:
+    domain: http://192.168.149.43:8998
+    token: jdcloud_market
+    ssoService: /service/SsoServiceApi
+    httpApiToken: 4f7c9f25a3311472d441d009710c9832
+
+usercenter:
+  url: http://uc-inner-api-ite.jcloud.com
+  tokenName: token
+  tokenVal: stag
+  sourceCode: ysc
